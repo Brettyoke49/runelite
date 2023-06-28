@@ -464,7 +464,22 @@ public class HiscorePanel extends PluginPanel
 						result.getSkill(RANGED).getLevel(),
 						result.getSkill(PRAYER).getLevel()
 					);
-					label.setText(Integer.toString(combatLevel));
+
+					if (!result.getSkill(ATTACK).getLevel() ||
+						!result.getSkill(STRENGTH).getLevel() ||
+						!result.getSkill(DEFENCE).getLevel() ||
+						!result.getSkill(HITPOINTS).getLevel() ||
+						!result.getSkill(MAGIC).getLevel() ||
+						!result.getSkill(RANGED).getLevel() ||
+						!result.getSkill(PRAYER).getLevel())
+					{
+						label.setText(">= " + Integer.toString(combatLevel));
+					}
+					else
+					{
+						label.setText(Integer.toString(combatLevel));
+					}
+					
 				}
 			}
 			else if ((s = result.getSkill(skill)) != null)
